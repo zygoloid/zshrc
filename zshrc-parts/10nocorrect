@@ -1,0 +1,4 @@
+for cmd in mkdir cp mv ln vless p4 g4 sc ti te psc blaze; do
+  alias $cmd="nocorrect $cmd"
+done
+

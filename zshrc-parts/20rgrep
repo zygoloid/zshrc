@@ -1,0 +1,36 @@
+grep() {
+  # extract pattern from grep arguments
+  local patt args
+  patt=
+  args=()
+  while true; do
+    arg="$1"
+    shift
+    args+=("$arg")
+
+    case $arg in
+      --)
+        patt=$1
+        break
+        ;;
+      --exclude-dir)
+        args+=("$1")
+        shift
+        ;;
+      -*)
+        ;;
+      *)
+        patt=$arg
+        break
+    esac
+  done
+  args+=("$@")
+
+  # add $patt to .zshinfo
+  sed -i "$(echo -e "/Last Search Pattern/a~MSle0~/$patt\n/Search String History/a?/$patt")" ~/.viminfo
+
+  # run grep
+  command grep --color=auto $args
+}
+
+alias rgrep="grep -r --exclude-dir .svn"

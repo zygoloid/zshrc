@@ -1,0 +1,12 @@
+# Add / (etc) as a non-word character to make path editing easier
+WORDCHARS=${WORDCHARS//[&=\/;!#%{]}}
+bindkey -e
+
+# Meta-u to chdir to the parent directory
+bindkey -s '\eu' '^Ucd ..; ls^M'
+
+# cd acts as pushd, and meta-p goes to previous dir.
+setopt AUTO_PUSHD
+setopt CHASE_DOTS
+setopt PUSHD_SILENT
+bindkey -s '\ep' '^Ubuiltin popd; dirs -v^M'
