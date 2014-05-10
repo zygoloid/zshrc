@@ -1,0 +1,9 @@
+# -M: nice informative prompt
+# -F: quit if less than a screen of text - disabled since it seems to be
+#     broken
+# -i: ignore case in lowercase searches
+# -R: display colours
+# -w: highlight new line after motion
+# -#1: <- and -> scroll one column
+export LESS="-M -i -R -w -#1"
+eval $(/bin/lesspipe)

@@ -1,0 +1,2 @@
+# Pretend '..' means 'remove last component' during cd.
+setopt no_chase_dots

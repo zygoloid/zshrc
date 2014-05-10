@@ -1,0 +1,44 @@
+# Assume we're up-to-date.
+ALL_SHELLS_VERSION=$(cat ~/.zsh/all-shells/version)
+source ~/.zsh/update-shell
+
+DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+
+setopt autocd cdablevars correct correctall
+setopt histignoredups
+setopt interactivecomments rcquotes
+setopt noclobber
+setopt extendedglob
+setopt no_nomatch
+setopt csh_junkie_loops
+typeset -U path
+READNULLCMD=less
+
+# Emacs-style keybindings.
+bindkey -e
+
+#autoload -Uz predict-on predict-off
+#predict-on
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+users=(richardsmith)
+zstyle ':completion:*' users $users
+
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+
+zstyle ':completion:*:rm:*' ignore-line yes
+
+#setopt auto_name_dirs
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle :compinstall filename '/home/richards/.zshrc'
+
+autoload -U compinit
+#compinit rgs 100206 -- causes zsh to segfault
+# End of lines added by compinstall

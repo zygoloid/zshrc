@@ -1,0 +1,10 @@
+# . source-parts directory: sources all files in directory
+
+for file in $(find "$1"/* | sort)
+do
+  case "$file" in
+    "$1"/\*) ;; # No matches?
+    *~) ;; # Don't run backup files
+    *) . "$file" ;;
+  esac
+done

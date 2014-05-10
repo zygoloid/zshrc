@@ -1,0 +1,4 @@
+alias menu=/google/data/ro/projects/menu/menu.par
+alias ls='ls --color=auto'
+alias dh='dirs -v'
+alias vim='vim -X'
