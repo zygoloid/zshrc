@@ -1,7 +1,7 @@
 function updateShell() {
   local dir=~/.zsh/all-shells
-  local newVersion=`cat $dir/version`
-  if [ $newVersion -ne ${ALL_SHELLS_VERSION:=0} ]; then
+  local newVersion=`cat "$dir/version"`
+  if [ "$newVersion" -ne "${ALL_SHELLS_VERSION:=0}" ]; then
     local version
     for version in $(seq $(($ALL_SHELLS_VERSION + 1)) $newVersion); do
       echo "Upgrading shell to version $version"
