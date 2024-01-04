@@ -3,7 +3,7 @@ grep() {
   local patt args
   patt=
   args=()
-  while true; do
+  while [[ $# -gt 0 ]]; do
     arg="$1"
     shift
     args+=("$arg")
@@ -19,6 +19,10 @@ grep() {
         ;;
       -*)
         ;;
+      "^shell-history-forwarder-daemon")
+        # Skip grep commands performed by go/hi
+        break
+        ;;
       *)
         patt=$arg
         break
@@ -27,7 +31,9 @@ grep() {
   args+=("$@")
 
   # add $patt to .zshinfo
-  sed -i "$(echo -e "/Last Search Pattern/a~MSle0~/$patt\n/Search String History/a?/$patt")" ~/.viminfo
+  if [[ -n $patt ]]; then
+    sed -i "$(echo -e "/Last Search Pattern/a~MSle0~/$patt\n/Search String History/a?/$patt")" ~/.viminfo
+  fi
 
   # run grep
   command grep --color=auto $args

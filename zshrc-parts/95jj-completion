@@ -1,0 +1,4 @@
+autoload -U compinit
+compinit
+source <(jj debug completion --zsh | sed '$d')  # remove the last line
+compdef _jj jj

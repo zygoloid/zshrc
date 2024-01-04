@@ -6,4 +6,4 @@
 # -w: highlight new line after motion
 # -#1: <- and -> scroll one column
 export LESS="-M -i -R -w -#1"
-eval $(/bin/lesspipe)
+eval $(/usr/bin/lesspipe)

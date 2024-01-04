@@ -1,7 +1,7 @@
 autoload -U promptinit
 promptinit
 case $HOSTNAME in
-  queeg2*) PROMPTFG=cyan ;;
+  zyg*) PROMPTFG=cyan ;;
   richardsmith*) PROMPTFG=yellow ;;
   *) PROMPTFG=red ;;
 esac

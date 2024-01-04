@@ -10,3 +10,11 @@ setopt AUTO_PUSHD
 setopt CHASE_DOTS
 setopt PUSHD_SILENT
 bindkey -s '\ep' '^Ubuiltin popd; dirs -v^M'
+
+# Meta-h inserts a here-doc, meta-e ends it.
+bindkey -s '\eh' '<(<<EOF^M'
+bindkey -s '\ee' 'EOF^M)^M'
+
+# ^p and ^n move through history not through the command.
+bindkey '^p' up-history
+bindkey '^n' down-history
